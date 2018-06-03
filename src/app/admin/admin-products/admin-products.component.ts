@@ -9,9 +9,9 @@ import { Component } from '@angular/core';
 })
 export class AdminProductsComponent {
 
-  products$: Observable<any>;
+  products: any[] = [];
 
   constructor(private productService: ProductService) {
-    this.products$ = this.productService.getProducts();
+    this.productService.getProducts().subscribe( products => this.products = products);
   }
 }

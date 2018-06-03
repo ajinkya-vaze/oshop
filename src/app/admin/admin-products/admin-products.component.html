@@ -1,14 +1,14 @@
 
 <a class="btn btn-primary" routerLink="new">New product</a>
 
-<table class="table">
+<table class="table mt-1">
     <thead>
         <th>Title</th>
         <th>Price</th>
         <th></th>
     </thead>
     <tbody>
-        <tr *ngFor="let product of products$ | async">
+        <tr *ngFor="let product of products">
             <td>{{ product.title }}</td>
             <td>{{ product.price | currency:'USD':'symbol' }}</td>
             <td><a [routerLink]="['/admin/products', product.key]">Edit</a></td>
