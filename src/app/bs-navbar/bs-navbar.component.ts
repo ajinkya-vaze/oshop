@@ -12,7 +12,6 @@ export class BsNavbarComponent {
 
   constructor(private authService: AuthService) {
     this.authService.oshopUser$.subscribe( oshopUser => {
-      console.log(oshopUser);
       return this.oshopUser = oshopUser;
     });
   }
