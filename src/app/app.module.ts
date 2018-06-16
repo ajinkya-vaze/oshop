@@ -3,6 +3,7 @@ import { AdminAuthGuard } from './admin-auth.guard';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule, Component } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireModule } from 'angularfire2';
@@ -12,6 +13,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
+import {TableModule} from 'primeng/table';
 import { CustomFormsModule} from 'ng2-validation';
 
 import { AppComponent } from './app.component';
@@ -46,6 +48,7 @@ import { ProductService } from './product.service';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
@@ -66,7 +69,8 @@ import { ProductService } from './product.service';
       { path: 'admin/products/:id', component: ProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard] },
       { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard] },
     ]),
-    CustomFormsModule
+    CustomFormsModule,
+    TableModule
   ],
   providers: [
     AuthService,

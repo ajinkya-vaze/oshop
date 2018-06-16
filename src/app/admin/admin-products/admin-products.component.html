@@ -1,7 +1,25 @@
 
-<a class="btn btn-primary" routerLink="new">New product</a>
+<a class="btn btn-primary mb-1" routerLink="new">New product</a>
 
-<table class="table mt-1">
+<input type="text" class="form-control mb-1" placeholder="Search..." (keyup)="filterByTitle(query.value)" #query>
+
+<p-table [value]="filteredProducts" [paginator]="true" [rows]="10">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
+        <tr>
+            <td>{{ product.title }}</td>
+            <td>{{ product.price | currency:'USD':'symbol' }}</td>
+            <td><a [routerLink]="['/admin/products', product.key]">Edit</a></td>
+        </tr>
+    </ng-template>
+</p-table>
+<!-- <table class="table mt-1">
     <thead>
         <th>Title</th>
         <th>Price</th>
@@ -14,4 +32,4 @@
             <td><a [routerLink]="['/admin/products', product.key]">Edit</a></td>
         </tr>
     </tbody>
-</table>
+</table> -->
