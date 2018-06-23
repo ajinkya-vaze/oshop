@@ -12,6 +12,7 @@ import { switchMap } from 'rxjs/operators';
 })
 export class AuthService {
   private user$: Observable<firebase.User>;
+  private loggedInUserId: any = "";
 
   constructor(private angularFireAuth: AngularFireAuth,
     private router: Router,
@@ -27,6 +28,7 @@ export class AuthService {
         const user = loggedInUser.user;
         this.router.navigate([returnUrl]);
         this.userService.saveUser(user.uid, user.displayName, user.email);
+        this.loggedInUserId = user.uid;
       });
   }
 
@@ -44,5 +46,9 @@ export class AuthService {
       }
       return of(null);
     }));
+  }
+
+  getLoggedInUserId() {
+    return this.loggedInUserId;
   }
 }

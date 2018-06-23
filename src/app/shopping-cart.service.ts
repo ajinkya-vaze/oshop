@@ -62,6 +62,7 @@ export class ShoppingCartService {
   }
 
   getNumberOfItemsInCart(cart): number {
+    console.log(cart);
     let numberOfItems = 0;
     if (cart) {
       for (const productId in cart.items) {

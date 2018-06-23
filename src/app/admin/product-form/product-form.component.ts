@@ -3,7 +3,6 @@ import { CategoryService } from './../../category.service';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { Component } from '@angular/core';
-import { AngularFireList } from 'angularfire2/database';
 import { ProductService } from '../../product.service';
 
 @Component({
